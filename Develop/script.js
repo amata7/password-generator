@@ -33,13 +33,13 @@ function generatePassword() {
   let allowLower = window.confirm("Do you want your password to contain lowercase characters?");
 
   var allowable = [allowSymbol, allowNumber, allowUpper, allowLower];  
-  // var allowableNum = allowSymbol + allowNumber + allowUpper + allowLower;
-  // var charTypes = [{allowLower}, {allowUpper}, {allowNumber}, {allowSymbol}].filter(item => Object.values(item)[0]);
-
+  
+    //if no types are allowed, return this code
     if (!allowable.includes(true)) {
       window.alert("Choose at least one type of character to use.");
       return "";
     }
+
     // If the user chooses to allow uppercase then run this code, adds uppercase char to possible type
     if (allowUpper === true) {
       pwChoices = pwChoices.concat(upper);
@@ -57,10 +57,11 @@ function generatePassword() {
       pwChoices = pwChoices.concat(symbols);
     }
 
-
-    console.log(pwChoices);
-    console.log(typeof pwChoices);
-return "Password";
+    for (let i = 0; i < parseInt(chosenLength); i++) {
+      pwArray += pwChoices[Math.floor(Math.random()* pwChoices.length)];
+      password = pwArray;
+    }
+return password;
 }
 
 function writePassword() {
