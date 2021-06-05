@@ -66,7 +66,7 @@ function generatePassword() {
     pwArray += pwChoices[Math.floor(Math.random() * pwChoices.length)];
     password = pwArray;
   }
-  return password;
+  return `Your new password is: ${password}`;
 }
 
 function writePassword() {
